@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funding List</title>
+    <link rel="stylesheet" href="{% static 'funding/css/funding.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Funding List</h1>
+        <a href="{% url 'funding_form' %}">Add New Funding</a>
+    </header>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Amount</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for funding in funding_list %}
+                <tr>
+                    <td>{{ funding.id }}</td>
+                    <td>{{ funding.amount }}</td>
+                    <td>{{ funding.description }}</td>
+                    <td>{{ funding.date }}</td>
+                    <td>
+                        <a href="{% url 'funding_edit' funding.id %}">Edit</a>
+                        <a href="{% url 'funding_delete' funding.id %}">Delete</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5">No funding entries available.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

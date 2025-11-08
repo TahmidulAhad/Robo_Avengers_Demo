@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Component List - Robo Avengers</title>
+    <link rel="stylesheet" href="{% static 'components/css/components.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Robo Avengers - Component List</h1>
+        <a href="{% url 'component_form' %}">Add New Component</a>
+    </header>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for component in components %}
+                <tr>
+                    <td>{{ component.id }}</td>
+                    <td>{{ component.name }}</td>
+                    <td>{{ component.description }}</td>
+                    <td>
+                        <a href="{% url 'component_edit' component.id %}">Edit</a>
+                        <a href="{% url 'component_delete' component.id %}">Delete</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4">No components available.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

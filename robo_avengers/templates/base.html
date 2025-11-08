@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robo Avengers Club</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Robo Avengers Club</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'member_list' %}">Members</a></li>
+                <li><a href="{% url 'component_list' %}">Components</a></li>
+                <li><a href="{% url 'funding_list' %}">Funding</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2023 Robo Avengers Club</p>
+    </footer>
+</body>
+</html>

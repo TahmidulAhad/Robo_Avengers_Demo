@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Component Form</title>
+    <link rel="stylesheet" href="{% static 'components/css/components.css' %}">
+</head>
+<body>
+    <h1>{% if component %}Edit Component{% else %}Add Component{% endif %}</h1>
+    <form method="post" action="{% url 'component_save' component.id if component else 'new' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+    <a href="{% url 'component_list' %}">Back to Component List</a>
+</body>
+</html>

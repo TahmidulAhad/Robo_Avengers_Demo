@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Form</title>
+    <link rel="stylesheet" href="{% static 'members/css/members.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>{% if member %}Edit Member{% else %}Add Member{% endif %}</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+        </form>
+        <a href="{% url 'member_list' %}">Back to Member List</a>
+    </div>
+</body>
+</html>
